@@ -30,7 +30,19 @@ const SideBar = forwardRef(({ showNav }, ref) => {
               <HomeIcon className="h-5 w-5" />
             </div>
             <div>
-              <p>Home</p>
+              <p>Dashboard</p>
+            </div>
+          </div>
+        </a>
+        <a href="/owner">
+          <div
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}
+          >
+            <div className="mr-2">
+              <CreditCardIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p>Owner</p>
             </div>
           </div>
         </a>
@@ -43,18 +55,6 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
             <div>
               <p>Account</p>
-            </div>
-          </div>
-        </a>
-        <a href="/billing">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}
-          >
-            <div className="mr-2">
-              <CreditCardIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Billing</p>
             </div>
           </div>
         </a>

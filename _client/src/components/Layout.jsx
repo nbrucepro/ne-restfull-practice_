@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Transition } from "@headlessui/react";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
+import Table from "./Table";
 export default function Layout() {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -46,7 +47,7 @@ export default function Layout() {
           showNav && !isMobile ? "pl-56" : ""
         }`}
       >
-        <div className="px-4 md:px-16">what</div>
+        <div className="px-4 md:px-16"><Table/></div>
       </main>
     </>
   );
