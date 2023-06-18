@@ -12,12 +12,17 @@
     "@craco/craco": "^7.1.0",
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "axios": "^1.4.0",
+    "cloudinary-react": "^1.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.13.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",

@@ -17,9 +17,9 @@ function GlobalFilter({
 }) {
   const count = preGlobalFilteredRows.length;
   const [value, setValue] = useState(globalFilter)
-  const onChange = useAsyncDebounce(value => {
-    setGlobalFilter(value || undefined)
-  }, 200)
+  // const onChange = useAsyncDebounce(value => {
+  //   setGlobalFilter(value || undefined)
+  // }, 200)
 
   return (
     <label className='flex gap-x-2 items-baseline'>

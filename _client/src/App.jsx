@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import LoginPage from './components/pages/Login'
 import SignupPage from './components/pages/Signup'
+import ImageUpload from './components/pics/ImageUpload'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,16 +18,14 @@ function App() {
   return (
     <>
   {/* <Layout/>  */}
-  <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div className="max-w-md w-full space-y-8">
      <BrowserRouter>
         <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/signup" element={<SignupPage/>} />
+           <Route path="/login" element={<LoginPage/>} />
+            <Route path="/signup" element={<SignupPage/>} />       
+            <Route path='/dashboard' element={<Layout/>} />
+            <Route path='/image' element={<ImageUpload/>}/>
         </Routes>
       </BrowserRouter>
-    </div>
-  </div>
     </>
   )
 }

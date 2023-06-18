@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { signupFields } from "../constants/formFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 const fields=signupFields;
 let fieldsState={};
@@ -9,6 +12,8 @@ let fieldsState={};
 fields.forEach(field => fieldsState[field.id]='');
 
 export default function Signup(){
+
+  const navigate = useNavigate();
   const [signupState,setSignupState]=useState(fieldsState);
 
   const handleChange=(e)=>setSignupState({...signupState,[e.target.id]:e.target.value});
@@ -21,7 +26,16 @@ export default function Signup(){
 
   //handle Signup API Integration here
   const createAccount=()=>{
-
+    axios.post('http://localhost:4500/register',
+    {signupState}
+    )
+    .then((response)=> {
+    localStorage.setItem('token',response.data.token);
+    navigate("/dashboard")
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
     return(
@@ -40,8 +54,7 @@ export default function Signup(){
                             type={field.type}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
-                    />
-                
+                    />                
                 )
             }
           <FormAction handleSubmit={handleSubmit} text="Signup" />
