@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/Layout'
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -17,15 +17,15 @@ function App() {
 
   return (
     <>
-  <Layout/> 
-     <BrowserRouter>
+  {/* <Layout/>  */}
+     <Router>
         <Routes>
            <Route path="/login" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage/>} />       
             <Route path='/dashboard' element={<Layout/>} />
             <Route path='/image' element={<ImageUpload/>}/>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   )
 }
