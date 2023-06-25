@@ -1,0 +1,384 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.1.0",
+      "title": "Equipment Distribution APIs",
+      "description": "API for Equipment Distibution System built by <b>Bruce</b> using NodeJS and Mysql."
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "securityDefinitions": {
+      "Authorization": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "description": "Value: Bearer ",
+        "in": "header",
+        "scheme": "bearer"
+      }
+    },
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/auth/login": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "obj",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/LoginModel"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"Login successfully"
+            }
+          }
+        }
+      },
+      "/auth/register": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "obj",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/RegisterModel"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User registered successfully"
+            },
+            "409": {
+              "description": "User already Exist"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            }
+          }
+        }
+      },
+      "/auth/users": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "Retrieved"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        }
+      },
+      "/auth/users/{id}": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        }
+      },
+      "/laptops": {
+        "get": {
+          "tags": [
+            "Employees-laptops"
+          ],
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "Query ok"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        },
+        "post": {
+          "tags": [
+            "Employees-laptops"
+          ],
+          "description": "",         
+          "parameters":[{
+              "name": "obj",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/LaptopModel"
+              }
+          }],        
+          "consumes": [
+            "application/json"               
+          ],  
+          "responses": {
+            "200": {
+              "description": "Created"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        }
+      },
+  
+      "/laptops/{id}": {
+        "patch": {
+          "tags": [
+            "Employees-laptops"
+          ],
+          "description": "",        
+          "parameters":[{
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LaptopModel"
+            }
+        }], 
+          "responses": {
+            "201": {
+              "description": "Updated"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        },
+        "get": {
+          "tags": [
+            "Employees-laptops"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Employees-laptops"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "Authorization": []
+            }
+          ]
+        }
+      }    
+    },
+    "definitions": {
+      "LoginModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "rice"
+          },
+          "password": {
+            "type": "string",
+            "example": "rice12"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "RegisterModel": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "type": "string",
+            "example": "John"
+          },
+          "username": {
+            "type": "string",
+            "example": "Snow"
+          },
+          "password": {
+            "type": "string",
+            "example": "nezabruce@gmail.com"
+          }
+        },
+        "required": [
+          "names",
+          "username",
+          "password"
+        ]
+      },
+      "LaptopModel": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "jonas"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "blue"
+          },
+          "national_identity": {
+            "type": "string",
+            "example": "12000710913307"        
+          },
+          "telephone": {
+            "type": "number",
+            "example": "0788888888"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          },
+          "department": {
+            "type": "string",
+            "example": "Human Resource"
+          },
+          "position": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "laptop_manufacturer": {
+            "type": "string",
+            "example": "HP"
+          },
+          "model": {
+            "type": "string",
+            "example": "envy"
+          },
+          "serial_number": {
+            "type": "number",
+            "example": "3400"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      }
+    }
+  }

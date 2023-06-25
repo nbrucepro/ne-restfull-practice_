@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger_output.json');
+const swaggerDocument = require('./mob_swagger.json');
 
 // Enable CORS for all routes
 const corsOptions = {
@@ -79,7 +79,7 @@ res.send('deleted successfully!');
 
 // set listeners
 
-const port = 4500;
+const port = 5000;
 
 app.listen(port, () => {
   console.log(`server started on port ${port}`);

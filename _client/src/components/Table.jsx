@@ -22,8 +22,8 @@ function GlobalFilter({
   // }, 200)
 
   return (
-    <label className='flex gap-x-2 items-baseline'>
-      <span className='text-gray-700'>Search:</span>
+    <label className='flex gap-x-1 items-baseline'>
+      {/* <span className='text-gray-700'>Search:</span> */}
       <input
       type='text'
       className='rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:indigo-opacity-50'
@@ -32,7 +32,8 @@ function GlobalFilter({
         setValue(e.target.value);
         onChange(e.target.value);
       }}
-      placeholder={`${count} vehicles...`}
+      placeholder={`${count} Employees...`}
+      disabled
       />
     </label>
   )
@@ -52,7 +53,7 @@ function newVehicle() {
         setValue(e.target.value);
         onChange(e.target.value);
       }}
-      placeholder={'vehicles...'}
+      placeholder={'Employees...'}
       />
     </label>
   )
@@ -101,28 +102,28 @@ export function SelectColumnFilter({
   )
 }
 
-export function StatusPill({ value }) {
-  const status = value ? value.toLowerCase() : "unknown";
+// export function StatusPill({ value }) {
+//   const status = value ? value.toLowerCase() : "unknown";
 
-  return (
-    <span
-    className={
-      classNames(
-        "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
-        status.startsWith("active") ? "bg-green-100 text-green-800" : null,
-        status.startsWith("inactive") ? "bg-yellow-100 text-yellow-800" : null,
-        status.startsWith("offline") ? "bg-red-100 text-red-800" : null,
-    )
-    }
-    >{status}</span>
-  )
-}
+//   return (
+//     <span
+//     className={
+//       classNames(
+//         "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
+//         status.startsWith("active") ? "bg-green-100 text-green-800" : null,
+//         status.startsWith("inactive") ? "bg-yellow-100 text-yellow-800" : null,
+//         status.startsWith("offline") ? "bg-red-100 text-red-800" : null,
+//     )
+//     }
+//     >{status}</span>
+//   )
+// }
 
 export function AvatarCell({value, column, row}) {
   return (
     <div className="flex items-center">
     <div className="flex-shrink-0 h-10 w-10">
-      <img className="h-10 w-10 rounded-full" src='./rools_royce.jpg' alt="" />
+      <img className="h-10 w-10 rounded-full" src='./logo.jfif' alt="" />
       {/* <img className="h-10 w-10 rounded-full" src={row.original[column.imgAccessor]} alt="" /> */}
     </div>
     <div className="ml-4">

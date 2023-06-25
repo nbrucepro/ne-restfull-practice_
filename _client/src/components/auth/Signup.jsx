@@ -11,7 +11,7 @@ let fieldsState={};
 
 fields.forEach(field => fieldsState[field.id]='');
 
-export default function Signup(){
+export default function Signup({onClose}){
 
   const navigate = useNavigate();
   const [signupState,setSignupState]=useState(fieldsState);
@@ -26,12 +26,13 @@ export default function Signup(){
 
   //handle Signup API Integration here
   const createAccount=()=>{
-    axios.post('http://localhost:4500/register',
-    {signupState}
+    axios.post('http://localhost:5000/laptops',
+    {...signupState}
     )
     .then((response)=> {
-    localStorage.setItem('token',response.data.token);
-    navigate("/dashboard")
+    // localStorage.setItem('token',response.data.token);
+    // navigate("/dashboard")
+    window.location.reload();
     })
     .catch(error => {
       console.log(error);
@@ -40,6 +41,12 @@ export default function Signup(){
 
     return(
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <button
+          className="ml-[32rem] px-4 py-2 bg-red-700 text-white rounded-md"
+           onClick={onClose}
+          >
+          Close
+        </button>
         <div className="">
         {
                 fields.map(field=>
@@ -57,10 +64,10 @@ export default function Signup(){
                     />                
                 )
             }
-          <FormAction handleSubmit={handleSubmit} text="Signup" />
+          <FormAction handleSubmit={handleSubmit} text="Save" />
         </div>
 
-         
+      
 
       </form>
     )

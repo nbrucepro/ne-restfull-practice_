@@ -2,102 +2,36 @@ import { useState, useEffect, Fragment, useMemo } from "react";
 import { Transition } from "@headlessui/react";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
-import Table, { AvatarCell, SelectColumnFilter, StatusPill } from './Table'  // new
-
-const getData = () => {
-  const data = [
-    // {
-    //   name: 'Jane Cooper',
-    //   email: 'jane.cooper@example.com',
-    //   title: 'Regional Paradigm Technician',
-    //   department: 'Optimization',
-    //   status: 'Active',
-    //   role: 'Admin',
-    
-    //   age: 27,
-    //   imgUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    // },
-    // {
-    //   name: 'Cody Fisher',
-    //   email: 'cody.fisher@example.com',
-    //   title: 'Product Directives Officer',
-    //   department: 'Intranet',
-    //   status: 'Inactive',
-    //   role: 'Owner',
-    //   age: 43,
-    //   imgUrl: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    // },
-    // {
-    //   name: 'Esther Howard',
-    //   email: 'esther.howard@example.com',
-    //   title: 'Forward Response Developer',
-    //   department: 'Directives',
-    //   status: 'Active',
-    //   role: 'Member',
-    //   age: 32,
-    //   imgUrl: 'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    // },
-    // {
-    //   name: 'Jenny Wilson',
-    //   email: 'jenny.wilson@example.com',
-    //   title: 'Central Security Manager',
-    //   department: 'Program',
-    //   status: 'Offline',
-    //   role: 'Member',
-    //   age: 29,
-    //   imgUrl: 'https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    // },
-    // {
-    //   name: 'Kristin Watson',
-    //   email: 'kristin.watson@example.com',
-    //   title: 'Lean Implementation Liaison',
-    //   department: 'Mobility',
-    //   status: 'Inactive',
-    //   role: 'Admin',
-    //   age: 36,
-    //   imgUrl: 'https://images.unsplash.com/photo-1532417344469-368f9ae6d187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    // },
-    // {
-    //   name: 'Cameron Williamson',
-    //   email: 'cameron.williamson@example.com',
-    //   title: 'Internal Applications Engineer',
-    //   department: 'Security',
-    //   status: 'Active',
-    //   role: 'Member',
-    //   age: 24,
-    //   imgUrl: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    
-    // },
-    {
-      chasisnumber:2343, 
-      manufacturercompany:'Toyota' , 
-      manufactureryear:'2012', 
-      price:"$80000", 
-      platenumber:'Rab304',
-      modelname:'model y'
-    },
-    {
-      chasisnumber:'AN12334', 
-      manufacturercompany:'Toyota' , 
-      manufactureryear:'2005', 
-      price:"13 million", 
-      platenumber:'RAC234M',
-      modelname:'Toyota RAV4'
-    },
-    {
-      chasisnumber:'AN12334', 
-      manufacturercompany:'Toyota' , 
-      manufactureryear:'2005', 
-      price:"13 million", 
-      platenumber:'RAC234M',
-      modelname:'Toyota RAV4'
-    }
-  ]
-  return [...data, ...data, ...data, ...data, ...data, ...data]
-}
+import Table, { AvatarCell, SelectColumnFilter } from './Table'  // new
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function Layout() {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [data, setData] = useState([{"id":1,"firstname":"jonas","lastname":"blue","national_identity":120007,"telephone":"0788888888","email":"john@gmail.com","department":"Human Resource","position":"Manager","laptop_manufacturer":"HP","model":"envy","serial_number":3400}]);
+  
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate(); 
+
+  useEffect(()=>{
+    if(!token){
+        navigate("/login");
+    }
+  },[token,navigate])
+  useEffect(()=>{
+    axios.get("http://localhost:5000/laptops",{ headers: {
+      Authorization: `${token}`
+    },})
+    .then((response)=>{    
+       setData(response.data.laptops);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+    // return data;
+
+    // return [...data, ...data, ...data, ...data, ...data, ...data]
+  },[])
 
   function handleResize() {
     if (innerWidth <= 640) {
@@ -123,33 +57,53 @@ export default function Layout() {
 
   const columns = useMemo(() => [
     {
-      Header: "chasis number",
-      accessor: 'chasisnumber',      
+      Header: "firstname",
+      accessor: 'firstname',      
       imgAccessor: "imgUrl",
       emailAccessor: "email",
     },
     {
-      Header: "company",
-      accessor: 'manufacturercompany',
+      Header: "lastname",
+      accessor: 'lastname',
     },
     {
-      Header: "price",
-      accessor: 'price',
-      Cell: StatusPill,
+      Header: "national_identity",
+      accessor: 'national_identity',
     },
     {
-      Header: "plate number",
-      accessor: 'platenumber',
+      Header: "telephone",
+      accessor: 'telephone',
     },
     {
-      Header: "Model",
-      Cell: AvatarCell,
-      accessor: 'modelname',
+      Header: "email",
+      accessor: 'email',
+    },
+    {
+      Header: "department",
+      accessor: 'department',      
       Filter: SelectColumnFilter,  // new
       filter: 'includes',
     },
+    {
+      Header: "position",
+      accessor: 'position',
+    },
+    {
+      Header: "manufacturer",
+      accessor: 'laptop_manufacturer',
+    },
+   
+    {
+      Header: "Model",
+      Cell: AvatarCell,
+      accessor: 'model',
+    },
+    {
+      Header: "serial number",
+      accessor: 'serial_number',
+    },
   ],[])
-  const data = useMemo(() => getData(), [])
+  // const data = useMemo(() => getData(), [])
 
   return (
     <>

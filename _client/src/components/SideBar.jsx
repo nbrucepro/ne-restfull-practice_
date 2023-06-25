@@ -11,12 +11,12 @@ const SideBar = forwardRef(({ showNav }, ref) => {
       <div className="flex justify-center mt-6 mb-14">
         <picture className="text-center">
           <img
-            className="w-32 h-24 rounded-r-full"
+            className="w-18 h-12 rounded-r-full"
             // src="/ferox-transparent.png"
-            src="rools_royce.jpg"
+            src="logo.jfif"
             alt="company logo"
           />
-          <p className="text-lg">E-<span className="text-orange-600">vehicle</span> </p>
+          <p className="text-xs font-mono">U<span className="text-orange-500"> laptop</span> </p>
         </picture>
       </div>
 
@@ -35,7 +35,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </a>
-        <a href="/owner">
+        {/* <a href="/owner">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}
           >
@@ -46,16 +46,16 @@ const SideBar = forwardRef(({ showNav }, ref) => {
               <p>Owner</p>
             </div>
           </div>
-        </a>
-        <a href="/account">
+        </a> */}
+        <a href="/login" onClick={()=>{localStorage.removeItem("token")}}>
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors `}
+            className={`pl-6 py-3 mx-5 mt-[280%] rounded text-center cursor-pointer flex items-center transition-colors `}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
             </div>
             <div>
-              <p>Account</p>
+              <p>Logout</p>
             </div>
           </div>
         </a>

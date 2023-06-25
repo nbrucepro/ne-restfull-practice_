@@ -23,7 +23,7 @@ export default function SignupPage(){
               linkName="Login"
               linkUrl="/login"
             />
-            <Signup/>
+            <Signup onClose={onClose}/>
             </div>
             </div>
         </>

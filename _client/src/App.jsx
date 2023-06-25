@@ -1,33 +1,28 @@
-import { Component, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Layout from './components/Layout'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-import LoginPage from './components/pages/Login'
-import SignupPage from './components/pages/Signup'
-import ImageUpload from './components/pics/ImageUpload'
+
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./layout/Navbar";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddUser from "./users/AddUser";
+import EditUser from "./users/EditUser";
+import ViewUser from "./users/ViewUser";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-  {/* <Layout/>  */}
-     <Router>
+    <div className="App">
+      <Router>
+        <Navbar />
+
         <Routes>
-           <Route path="/login" element={<LoginPage/>} />
-            <Route path="/signup" element={<SignupPage/>} />       
-            <Route path='/dashboard' element={<Layout/>} />
-            <Route path='/image' element={<ImageUpload/>}/>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/adduser" element={<AddUser />} />
+          <Route exact path="/edituser/:id" element={<EditUser />} />
+          <Route exact path="/viewuser/:id" element={<ViewUser />} />
         </Routes>
       </Router>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

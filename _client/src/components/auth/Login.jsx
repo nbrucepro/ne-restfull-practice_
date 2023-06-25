@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { loginFields } from "../constants/formFields";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
@@ -23,9 +23,14 @@ export default function Login(){
     }
 
     //Handle Login API Integration here wayme
-    const authenticateUser = () =>{
-        axios.post('http://localhost:4500/login',
-        {loginState}
+    console.log(loginState);
+    const dummy = {
+        "username": "rice",
+        "password": "rice12"
+      }
+    const authenticateUser = () =>{  
+        axios.post("http://localhost:5000/auth/login",
+        {...loginState}
         )
         .then((response)=> {    
           localStorage.setItem('token',response.data.token)    
