@@ -1,13 +1,13 @@
 const loginFields=[
     {
-        labelText:"username",
-        labelFor:"username",
-        id:"username",
-        name:"username",
-        type:"username",
-        autoComplete:"username",
+        labelText:"email",
+        labelFor:"email",
+        id:"email",
+        name:"email",
+        type:"email",
+        autoComplete:"email",
         isRequired:true,
-        placeholder:"username"   
+        placeholder:"email"   
     },
     {
         labelText:"Password",
@@ -23,44 +23,14 @@ const loginFields=[
 
 const signupFields=[
     {
-        labelText:"firstname",
-        labelFor:"firstname",
-        id:"firstname",
-        name:"firstname",
+        labelText:"name",
+        labelFor:"name",
+        id:"name",
+        name:"name",
         type:"text",
-        autoComplete:"firstname",
+        autoComplete:"name",
         isRequired:true,
-        placeholder:"firstname"   
-    },
-    {
-        labelText:"lastname",
-        labelFor:"lastname",
-        id:"lastname",
-        name:"lastname",
-        type:"text",
-        autoComplete:"lastname",
-        isRequired:true,
-        placeholder:"lastname"   
-    },
-    {
-        labelText:"national identity",
-        labelFor:"national_identity",
-        id:"national_identity",
-        name:"national_identity",
-        type:"number",
-        autoComplete:"national_identity",
-        isRequired:true,
-        placeholder:"nationalidentity"   
-    },
-    {
-        labelText:"telephone",
-        labelFor:"telephone",
-        id:"telephone",
-        name:"telephone",
-        type:"number",
-        autoComplete:"telephone",
-        isRequired:true,
-        placeholder:"telephone"   
+        placeholder:"name"   
     },
     {
         labelText:"email",
@@ -73,54 +43,24 @@ const signupFields=[
         placeholder:"email"   
     },
     {
-        labelText:"department",
-        labelFor:"department",
-        id:"department",
-        name:"department",
-        type:"text",
-        autoComplete:"department",
-        isRequired:true,
-        placeholder:"department"   
-    },
-    {
-        labelText:"position",
-        labelFor:"position",
-        id:"position",
-        name:"position",
-        type:"text",
-        autoComplete:"position",
-        isRequired:true,
-        placeholder:"position"   
-    },
-    {
-        labelText:"laptop_manufacturer",
-        labelFor:"laptop_manufacturer",
-        id:"laptop_manufacturer",
-        name:"laptop_manufacturer",
-        type:"text",
-        autoComplete:"laptop_manufacturer",
-        isRequired:true,
-        placeholder:"laptop_manufacturer"   
-    },
-    {
-        labelText:"model",
-        labelFor:"model",
-        id:"model",
-        name:"model",
-        type:"text",
-        autoComplete:"model",
-        isRequired:true,
-        placeholder:"model"   
-    },
-    {
-        labelText:"serial_number",
-        labelFor:"serial_number",
-        id:"serial_number",
-        name:"serial_number",
+        labelText:"telephone",
+        labelFor:"telephone",
+        id:"telephone",
+        name:"telephone",
         type:"number",
-        autoComplete:"serial_number",
+        autoComplete:"telephone",
         isRequired:true,
-        placeholder:"serial_number"   
+        placeholder:"telephone"   
+    },
+    {
+        labelText:"Password",
+        labelFor:"password",
+        id:"password",
+        name:"password",
+        type:"password",
+        autoComplete:"current-password",
+        isRequired:true,
+        placeholder:"Password"   
     }
 ]
 

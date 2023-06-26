@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect,useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../layout/Navbar";
 
 export default function ViewUser() {
   const [user, setUser] = useState({
@@ -21,6 +22,9 @@ export default function ViewUser() {
   };
 
   return (
+    <>
+    <Navbar/>
+    
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
@@ -51,5 +55,6 @@ export default function ViewUser() {
         </div>
       </div>
     </div>
+    </>
   );
 }

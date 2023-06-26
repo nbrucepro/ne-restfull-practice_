@@ -9,7 +9,7 @@ export default function SignupPage(){
     // localStorage.removeItem('token');
   useEffect(()=>{
     if(token){
-        navigate("/dashboard");
+        navigate("/");
     }
   },[token,navigate])
     return(
@@ -23,7 +23,8 @@ export default function SignupPage(){
               linkName="Login"
               linkUrl="/login"
             />
-            <Signup onClose={onClose}/>
+            {/* <Signup onClose={onClose}/> */}
+            <Signup/>
             </div>
             </div>
         </>

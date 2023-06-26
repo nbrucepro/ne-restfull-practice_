@@ -4,7 +4,6 @@ import FormAction from "./FormAction";
 import Input from "./Input";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import FormExtra from './FormExtra';
 
 
 const fields=signupFields;
@@ -12,7 +11,7 @@ let fieldsState={};
 
 fields.forEach(field => fieldsState[field.id]='');
 
-export default function Signup(){
+export default function Signup({onClose}){
 
   const navigate = useNavigate();
   const [signupState,setSignupState]=useState(fieldsState);
@@ -27,7 +26,7 @@ export default function Signup(){
 
   //handle Signup API Integration here
   const createAccount=()=>{
-    axios.post('http://localhost:8000/api/v1/auth/signup',
+    axios.post('http://localhost:5000/laptops',
     {...signupState}
     )
     .then((response)=> {
@@ -41,8 +40,14 @@ export default function Signup(){
   }
 
     return(
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>  
-        <div className="-space-y-px">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <button
+          className="ml-[32rem] px-4 py-2 bg-red-700 text-white rounded-md"
+           onClick={onClose}
+          >
+          Close
+        </button>
+        <div className="">
         {
                 fields.map(field=>
                         <Input
@@ -60,8 +65,10 @@ export default function Signup(){
                 )
             }
           <FormAction handleSubmit={handleSubmit} text="Save" />
-        </div>      
-        <FormExtra/>
+        </div>
+
+      
+
       </form>
     )
 }

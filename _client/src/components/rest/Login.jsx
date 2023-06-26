@@ -23,13 +23,13 @@ export default function Login(){
     }
 
     //Handle Login API Integration here wayme
+    console.log(loginState);
     const dummy = {
         "username": "rice",
         "password": "rice12"
       }
-      console.log({...loginState})
     const authenticateUser = () =>{  
-        axios.post("http://localhost:8000/api/v1/auth/authenticate",
+        axios.post("http://localhost:5000/auth/login",
         {...loginState}
         )
         .then((response)=> {    

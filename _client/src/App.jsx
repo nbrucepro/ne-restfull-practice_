@@ -1,26 +1,24 @@
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./layout/Navbar";
+// import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddUser from "./users/AddUser";
 import EditUser from "./users/EditUser";
 import ViewUser from "./users/ViewUser";
+import LoginPage from "./components/pages/Login";
+import SignupPage from "./components/pages/Signup";
+import AppCart from "./tests/AppCart";
+import Amazon from "./amazon/Amazon";
+import Modal from "./amazon/components/Modal";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navbar />
-
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/adduser" element={<AddUser />} />
-          <Route exact path="/edituser/:id" element={<EditUser />} />
-          <Route exact path="/viewuser/:id" element={<ViewUser />} />
-        </Routes>
-      </Router>
+      
+      {/* <AppCart/> */}
+      <Amazon/>
     </div>
   );
 }

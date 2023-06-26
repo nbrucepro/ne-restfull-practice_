@@ -9,7 +9,7 @@ export default function LoginPage(){
   
     useEffect(()=>{
       if(token){
-          navigate("/dashboard");
+          navigate("/");
       }
     },[token,navigate])
     return(
